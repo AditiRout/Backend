@@ -3,8 +3,8 @@ const { default: mongoose } = require('mongoose')
 const app=express()
 const mongo=require('mongoose')
 const stu=require('./models/student.js')
-
-// mongo.connect("mongodb://localhost:27017/SocialMedia").then(()=>console.log("connected successfully"))
+require('dotenv').config()
+// mongo.connect(MONGO_URL).then(()=>console.log("connected successfully"))
 
 const connectDB= async(database)=>{
     try{
@@ -17,7 +17,7 @@ const connectDB= async(database)=>{
     }
 }
 
-connectDB('mongodb://localhost:27017/School')
+connectDB(`${process.env.MONGO_URL}`)
                                                        
 app.listen(5000,()=>
 console.log('server started'))
